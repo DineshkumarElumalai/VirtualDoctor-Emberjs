@@ -1,0 +1,39 @@
+{{!-- {{yield}} --}}
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container">
+        <div class="col-md-2">
+            <a class="navbar-brand" href="#">VIRTUAL DOCTOR</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse col-md-10" id="collapsibleNavbar">
+            <ul class="navbar-nav" style="position:relative">
+                <li class="nav-item">
+                    {{#link-to "login" class="nav-link"}} Home {{/link-to}}
+                </li>
+
+                <li class="nav-item">
+                    {{#link-to "dashboard.admin" class="nav-link"}} Create {{/link-to}}
+                </li>
+
+            </ul>
+            <ul class="username">
+                <li class="dropdown">
+                    <a class="dropdown-toggle size" data-toggle="dropdown" href="#" style="color:white">{{username}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="size">
+                            <a href="#" style="color:black">My Profile</a>
+                        </li>
+                        <li {{action "logout"}}>
+                            <a  href="#" style="color:black" >
+                                <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,15 @@
+
+.username{
+    float:right;
+    position: absolute;
+    top: 7px;
+    right: 0px;
+
+}
+ul {
+    list-style-type: none;
+  }
+.nav-item{
+    padding-left:10px;
+    padding-right: 10px;
+  }
