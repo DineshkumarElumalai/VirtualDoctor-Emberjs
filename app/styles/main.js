@@ -26,7 +26,7 @@ function connect(event) {
 
         var socket = new SockJS('http://localhost:8080/ws');
         stompClient = Stomp.over(socket);
-
+        console.log("before connect");
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
@@ -35,12 +35,13 @@ function connect(event) {
 
 function onConnected() {
     // Subscribe to the Public Topic
+    console.log("on connected bro");
     category = document.querySelector('#category').value.trim();
     console.log("category",category);
-    stompClient.subscribe('http://localhost:8080/topic/public/'+category, onMessageReceived);
+    stompClient.subscribe('/topic/public/'+category, onMessageReceived);
 
     // Tell your username to the server
-    stompClient.send("http://localhost:8080/app/"+category+"/chat.addUser",
+    stompClient.send("/app/"+category+"/chat.addUser",
         {},
         JSON.stringify({sender: username, type: 'JOIN',category:category})
     )
@@ -65,7 +66,8 @@ function sendMessage(event) {
             type: 'CHAT',
             category:category
         };
-        stompClient.send("http://localhost:8080/app/"+category+"/chat.sendMessage", {}, JSON.stringify(chatMessage));
+        console.log(chatMessage["content"], stompClient);
+        stompClient.send("/app/"+category+"/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();

@@ -20,4 +20,5 @@ export default Component.extend({
     //         this.sockjs.sendInfo(`${username}: ${info}`);
     //     }
     // }
+    
 });
