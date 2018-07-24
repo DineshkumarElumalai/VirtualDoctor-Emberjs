@@ -3,12 +3,11 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
     auth: service('authentication'),
-    model(){
-        var user = localStorage.getItem("loggedin")
-       var username = JSON.parse(user).username
-       this.set("username",username)
-    //    return JSON.parse(username)
-    },
+    username: Ember.computed(function(){
+        var user = localStorage.getItem("loggedin");
+        let username = JSON.parse(user).username
+        return username;
+    }),
     actions:{
         
         logout(){

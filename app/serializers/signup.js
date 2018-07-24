@@ -10,15 +10,23 @@ export default DS.RESTSerializer.extend({
     },
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
         console.log(payload.success);
-        
-        payload.signup = {
-            success : payload.success,
-            message : payload.message
+        if(payload.success){
+            payload.signup = {
+                success : payload.success,
+                message : payload.message,
+                id : 1
+            }
+            delete payload.success
+            delete payload.message
+        }else{
+            payload.errors ={
+                success : payload.success,
+                message : payload.message,
+            }
+            delete payload.success
+            delete payload.message
         }
-        payload.id = 1
-
-        delete payload.success
-        delete payload.message
+        
 
         console.log(payload);
 

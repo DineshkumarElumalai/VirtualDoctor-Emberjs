@@ -11,7 +11,7 @@ export default Controller.extend({
                         console.log(result)
                         this.transitionToRoute("login")
                     }).catch((err)=>{
-                        console.log(err);
+                        console.log("test", err);
                         alert("please enter valid credentials")
                     })
                 }
