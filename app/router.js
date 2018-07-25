@@ -11,9 +11,12 @@ Router.map(function () {
     this.route('admin');
     this.route('patient');
     this.route('doctor');
+    this.route('adminview');
   });
   this.route('login', { path: '/login' });
-  this.route('dashboard', { path: '/' });
+  this.route('dashboard', { path: '/' }, function() {
+    
+  });
   this.route('signup', { path: '/signup' });
 
   this.route('admin-dashboard');
