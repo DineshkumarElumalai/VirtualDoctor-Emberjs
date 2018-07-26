@@ -7,6 +7,12 @@ var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+// Ember.Handlebars.extend({
+// registerHelper( passedString) {
+//     var theString = passedString[0];
+//     return new Handlebars.SafeString(theString)
+// }
+// });
 export default Component.extend({
    
     auth: service('chat'),
@@ -19,25 +25,32 @@ export default Component.extend({
         var username = JSON.parse(user).username
         return username;
     }),
+    visible:"",
+    color:"",
+    
+    
     init() {
         this._super(...arguments);
         this.get('client').connect();
+        this.set('visible',true)
         this.set("color",this.getAvatarColor(username)) 
+        // this.set("avatarText",)
     },
     actions: {
         connect() {
             this.get('client').connect();
         },
         visible(){
-            console.log("hello")
-            this.set('visible',true)
+            
+            this.set('visible',false)
+            console.log(this.get("visible"))
         },
         disconnect() {
             this.get('client').disconnect();
         },
         sendMessage(message) {
             this.get('client').sendMessage(message);
-            this.message="";
+            this.set("message","")
         },
         
     },
@@ -47,6 +60,7 @@ export default Component.extend({
             hash = 31 * hash + messageSender.charCodeAt(i);
         }
         var index = Math.abs(hash % colors.length);
+        console.log(colors[index]);
         return colors[index];
     }
 

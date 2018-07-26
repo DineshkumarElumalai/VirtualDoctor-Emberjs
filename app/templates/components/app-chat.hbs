@@ -1,8 +1,8 @@
 <link integrity="" rel="stylesheet" href="http://localhost:4200/assets/chat.css">
 
 
-
-{{!-- <div id="username-page">
+{{#if visible}} 
+<div id="username-page">
     <div class="username-page-container">
         <h1 class="title">Please select a category</h1>
         <form id="usernameForm" name="usernameForm">
@@ -12,7 +12,7 @@
         </form>
     </div>
 </div>
-{{#if }} --}}
+{{else}}
     <div id="chat-page">
         <div class="chat-container">
             <div class="chat-header">
@@ -22,7 +22,7 @@
             <ul id="messageArea">
                 {{#each client.messages as |message|}}
                 {{!-- <li class="event-message"><p>{{message.type}}</p></li> --}}
-                <li class="chat-message"><i style="background-color: rgb(33, 150, 243);">a</i><span>{{message.user}}</span><p>{{message.content}}</p></li>
+                <li class="chat-message"><i style="background-color: {{color}}">{{message.user}}</i><span>{{message.user}}</span><p>{{message.content}}</p></li>
                 {{/each}}
             </ul>
             <form id="messageForm" name="messageForm">
@@ -35,7 +35,7 @@
             </form>
         </div>
     </div>
-{{!-- {{/if}} --}}
+{{/if}}
 {{!-- <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
