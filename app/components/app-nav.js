@@ -5,7 +5,7 @@ export default Component.extend({
    
     auth: service('authentication'),
     username: Ember.computed(function(){
-        var user = localStorage.getItem("loggedin");
+        let user = localStorage.getItem("loggedin");
         let username = JSON.parse(user).username
         return username;
     }),

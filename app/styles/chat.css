@@ -134,12 +134,12 @@ button.accent {
 
 
 #chat-page {
-    position: relative;
+    position: absolute;
     height: 100%;
 }
 
 .chat-container {
-    width: 160%;
+    width: 60vh;
     margin-left: -270px;
     margin-right: 270px;
     background-color: #fff;
@@ -148,6 +148,7 @@ button.accent {
     height: calc(100% - 60px);
     max-height: 600px;
     position: relative;
+    overflow-x: auto;
 }
 
 #chat-page ul {
@@ -207,6 +208,7 @@ button.accent {
     border-radius: 50%;
     font-style: normal;
     text-transform: uppercase;
+
 }
 
 #chat-page .chat-message span {

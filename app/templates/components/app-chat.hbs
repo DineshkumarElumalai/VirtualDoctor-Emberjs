@@ -1,46 +1,60 @@
 <link integrity="" rel="stylesheet" href="http://localhost:4200/assets/chat.css">
-<script src="http://localhost:4200/assets/main.js"></script> 
 
-<div id="username-page">
+
+
+{{!-- <div id="username-page">
     <div class="username-page-container">
-        <h3 class="title">Please select any Category</h3>
+        <h1 class="title">Please select a category</h1>
         <form id="usernameForm" name="usernameForm">
-            {{!-- <div class="form-group">
-                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
-                <input type="text" id="category" placeholder="Category" autocomplete="off" class="form-control" />
-            </div> --}}
             <div class="form-group">
-                <button type="submit" class="accent username-submit">Start Chatting</button>
+                <button type="submit" {{action 'visible'}} class="accent username-submit">Start Chatting</button>
             </div>
         </form>
     </div>
 </div>
-
-<div id="chat-page" class="hidden">
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>Virtual Doctor</h2>
-        </div>
-        <div class="connecting">
-            Connecting...
-        </div>
-        <ul id="messageArea">
-
-        </ul>
-        <form id="messageForm" name="messageForm">
-            <div class="form-group">
-                <div class="input-group clearfix">
-                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                    <button type="submit" class="primary">Send</button>
+{{#if }} --}}
+    <div id="chat-page">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>VIRTUAL DOCTOR</h2>
+            </div>
+            
+            <ul id="messageArea">
+                {{#each client.messages as |message|}}
+                {{!-- <li class="event-message"><p>{{message.type}}</p></li> --}}
+                <li class="chat-message"><i style="background-color: rgb(33, 150, 243);">a</i><span>{{message.user}}</span><p>{{message.content}}</p></li>
+                {{/each}}
+            </ul>
+            <form id="messageForm" name="messageForm">
+                <div class="form-group">
+                    <div class="input-group clearfix">
+                        {{input type="text" value=message placeholder="Type a message..." autocomplete="off" class="form-control"}}
+                        <button type="submit" {{action 'sendMessage' message}} class="primary">Send</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-{{!-- 
+{{!-- {{/if}} --}}
+{{!-- <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
 
-<textarea id="chat-content" style="width:500px;height:300px" >
-</textarea><br/>
-{{input type='text' placeholder='User Name' value=uname}}
-{{input type='text' placeholder='Chat Message' value=mess}}
-<button {{action 'enter' mess uname}}>Send</button><br>--}}
+            <div class="panel-body">
+                {{#each client.messages as |message|}}
+                <div class="col-xs-3 chat-user">{{message.user}}</div>
+                <div class="col-xs-9">{{message.content}}</div>
+                {{/each}}
+            </div>
+            <div class="panel-footer">
+                <form class="form-inline">
+                    <div class="form-group">
+                        {{input placeholder=(if client.connected "Say something" "Please connect!") class="form-control" value=message disabled=(if
+                        client.connected null true)}}
+                    </div>
+                    <button class="btn btn-default" {{action 'sendMessage' message}} disabled={{if client.connected null true}}> Send </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> --}}
