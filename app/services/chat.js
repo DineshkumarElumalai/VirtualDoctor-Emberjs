@@ -13,7 +13,7 @@ export default Ember.Service.extend({
     },
     add(user, message) {
         var chatMessage = {
-            user: JSON.parse(this.username).username,
+            user: user,
             content: message,
             type: 'JOIN',
             category:category
@@ -46,6 +46,7 @@ export default Ember.Service.extend({
         this.set('connected', false);
     },
     showMessage(user, message) {
+        console.log(user,message,"hello")
         this.add(user, message);
     },
     sendMessage(message) {
